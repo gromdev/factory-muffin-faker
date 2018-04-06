@@ -71,15 +71,15 @@ class Facade
     {
         switch (count($arguments)) {
             case 0:
-                return self::instance()->$method();
+                return self::instance()->getGenerator()->$method();
             case 1:
-                return self::instance()->$method($arguments[0]);
+                return self::instance()->getGenerator()->$method($arguments[0]);
             case 2:
-                return self::instance()->$method($arguments[0], $arguments[1]);
+                return self::instance()->getGenerator()->$method($arguments[0], $arguments[1]);
             case 3:
-                return self::instance()->$method($arguments[0], $arguments[1], $arguments[2]);
+                return self::instance()->getGenerator()->$method($arguments[0], $arguments[1], $arguments[2]);
             default:
-                return call_user_func_array([self::instance(), $method], $arguments);
+                return call_user_func_array([self::instance()->getGenerator(), $method], $arguments);
         }
     }
 }
